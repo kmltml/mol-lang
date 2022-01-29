@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Mol lang</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="grid-container">
+      <div id="editor-header">
+        <button id="exec-btn">Execute</button>
+        <select id="examples">
+          <option value="">examples</option>
+        </select>
+      </div>
+      <div id="editor"></div>
+      <div id="mixture"></div>
+      <div id="run-controls">
+        <button id="step-btn">Step</button>
+        <button id="run-btn">Run</button>
+        <button id="stop-btn">Stop</button>
+        <span id="status"></span>
+      </div>
+      <div id="output"></div>
+      <div id="input">
+        <input id="input-field" type="text"/>
+        <button id="input-btn">Input</button>
+      </div>
+    </div>
+    <script src="dist/bundle.js"></script>
+  </body>
+</html>

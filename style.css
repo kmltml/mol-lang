@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-rows: min-content [header] 1fr [mixture] min-content [controls] 1fr [output] min-content [bottom];
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+}
+
+#grid-container > div {
+    padding: 0.5em;
+}
+
+#editor-header {
+    grid-row: 1;
+    grid-column: 1;
+    border-right: rgba(0, 0, 0, 0.2) solid 1px;
+}
+
+#editor {
+    grid-row: header / bottom;
+    grid-column: 1;
+    border-right: rgba(0, 0, 0, 0.2) solid 1px;
+}
+
+#mixture, #run-controls, #output, #input {
+    grid-column: 2;
+    border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
+}
+
+#mixture {
+    grid-row: 1 / mixture;
+    overflow: auto;
+}
+
+#run-controls {
+    grid-row: mixture;
+}
+
+#output {
+    grid-row: controls;
+    overflow-wrap: anywhere;
+    overflow: auto;
+}
+
+#input {
+    grid-row: output;
+    display: flex;
+    gap: 1em;
+}
+
+#input-field {
+    flex-grow: 1;
+}
