@@ -12,6 +12,7 @@
         <select id="examples">
           <option value="">examples</option>
         </select>
+        <a id="help" href="#">?</a>
       </div>
       <div id="editor"></div>
       <div id="mixture"></div>
@@ -25,6 +26,85 @@
       <div id="input">
         <input id="input-field" type="text"/>
         <button id="input-btn">Input</button>
+      </div>
+    </div>
+    <div id="help-popup">
+      <a id="help-popup-close" href="#">x</a>
+      <div class="content">
+        <h1>Mol-lang reference</h1>
+        <h2>State</h2>
+
+        <p>
+          The state of a mol interpreter consists of a mixture, containing
+          multiple molecules, and a set of reactions. A molecule is a
+          sequence of atoms. An atom is any character except whitespace,
+          dash (-), or capital letters.
+        </p>
+
+        <p>
+          A reaction has a list of consumed molecules on the left side,
+          and a list of produced molecules on the right side. Molecules
+          are separated by whitespace. Sides of a reaction are separated
+          by dash, or a unicode arrow character (→).
+        </p>
+
+        <h2>Program</h2>
+        <p>
+          The program consists of a list of instructions, each in a
+          single line. There are two types of an instruction: molecules
+          and reactions. Any molecules written in a line without a dash
+          or arrow will be added to the initial mixture. Initial
+          molecules may be written each in a separate line, written in a
+          single line and separated by space or any combination of
+          that. Any line containing dash or arrow defines a reaction,
+          with left side before the arrow and the right side
+          after. Molecules within a side are separated by whitespace.
+        </p>
+
+        <h2>Execution</h2>
+        <p>
+          The basic execution step consists of selecting a reaction and
+          molecules from the mixture, that match the left side of the
+          reaction. All molecules from the reaction must match a
+          molecule in the mixture and every molecule must match exactly
+          one from the reaction. Once everything is matched, the
+          molecules corresponding to the left side of the reaction are
+          removed from the mixture, and the molecules on the right side
+          are added in. If multiple reactions can be applied, one is
+          chosen randomly.
+        </p>
+
+        <h2>Variables</h2>
+        <p>
+          Molecules in a reaction can contain variables. They are
+          represented by capital letters within the molecules. A
+          variable at the last position within a molecule may match any
+          number of atoms (including 0). A variable in any other place
+          must match a single atom. Any variable appearing multiple
+          times in the left side must match the same sequence of atoms
+          for all instances. All variables appearing in the right side
+          must have a corresponding variable on the left side, and get
+          replaced by the matched atoms whenever the reaction gets
+          applied.
+        </p>
+
+        <h2>Input/Output</h2>
+        <p>
+          There are two special atoms related to input and
+          output. Whenever a molecule starting with the &lt; atom gets
+          produced, a character gets output to the console. Number of
+          atoms following the &lt; atom gets converted to the ascii code
+          of the character to output. Type of those atoms doesn't affect
+          anything. For input, a molecule starting with the &gt; atom
+          must be produced. The interpreter will then wait for input,
+          and replace that molecule with one containing whatever atoms
+          followed the &gt; atom, repeated as many times, as the input
+          character's ascii code. Whenever multiple input and output
+          molecules get produced in the same step, output is always
+          handled first, followed by input and only then any other
+          reactions. The order within output and witin input is
+          unspecified however.
+        </p>
       </div>
     </div>
     <script src="dist/bundle.js"></script>

@@ -152,3 +152,11 @@ function updateMixtureDisplay() {
     run()
   }
 }
+
+;(document.getElementById("help") as HTMLAnchorElement).onclick = () => {
+  document.getElementById("help-popup")!.classList.toggle("visible")
+}
+
+;(document.getElementById("help-popup-close") as HTMLAnchorElement).onclick = () => {
+  document.getElementById("help-popup")!.classList.remove("visible")
+}

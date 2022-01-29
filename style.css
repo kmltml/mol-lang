@@ -16,6 +16,7 @@ body {
 }
 
 #editor-header {
+    position: relative;
     grid-row: 1;
     grid-column: 1;
     border-right: rgba(0, 0, 0, 0.2) solid 1px;
@@ -55,4 +56,48 @@ body {
 
 #input-field {
     flex-grow: 1;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+#help {
+    font-size: 1.5em;
+    position: absolute;
+    right: 0.5em;
+}
+
+#help-popup {
+    display: none;
+
+    /* padding: 1em; */
+    position: absolute;
+    right: 10vw;
+    left: 10vw;
+    top: 10vh;
+    bottom: 10vh;
+    z-index: 10;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 20px;
+}
+
+#help-popup .content {
+    overflow: auto;
+    height: 100%;
+    padding: 2em;
+    box-sizing: border-box;
+}
+
+#help-popup.visible {
+    display: block;
+}
+
+#help-popup-close {
+    position: absolute;
+    right: 1em;
+    top: 0.5em;
+    font-size: 1.5em;
+    font-family: sans-serif;
 }
